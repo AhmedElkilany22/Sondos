@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Sondos ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Cairo', sans-serif;
+    background: linear-gradient(135deg, #ff4e8a, #ff9a9e);
+    text-align: center;
+    color: white;
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    top: 20%;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 40px;
+    animation: glow 2s infinite alternate;
+}
+
+p {
+    font-size: 20px;
+    line-height: 1.8;
+    margin: 20px;
+}
+
+button {
+    padding: 15px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    background-color: white;
+    color: #ff4e8a;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #ffe6f0;
+    transform: scale(1.1);
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px white; }
+    to { text-shadow: 0 0 25px #fff; }
+}
+
+.heart {
+    position: absolute;
+    color: white;
+    animation: float 6s linear infinite;
+}
+
+@keyframes float {
+    from { transform: translateY(100vh); opacity: 1; }
+    to { transform: translateY(-10vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>سندس ❤️</h1>
+    <p>
+        كل سنة وإنتي حبيبتي وصاحبتي وأجمل حاجة حصلت في حياتي.  
+        وجودك جنبي نعمة بحمد ربنا عليها كل يوم.  
+        ضحكتك بتغير يومي، وكلامك بيطمني، وقلبك هو المكان الوحيد اللي بحس فيه بالأمان.  
+        أنا بحبك حب مش مجرد كلمة،  
+        حب بيكبر كل يوم أكتر من اللي قبله.  
+        يا أجمل صدفة وأحلى قدر ❤️
+    </p>
+
+    <button onclick="showLove()">اضغطي هنا يا روحي 💌</button>
+
+    <p id="secret" style="display:none; font-size:22px; margin-top:20px;">
+        أنا اخترتك إنتي… وهفضل أختارك كل يوم ❤️  
+        Happy Valentine’s Day يا كل حياتي 💕
+    </p>
+</div>
+
+<script>
+function showLove() {
+    document.getElementById("secret").style.display = "block";
+}
+
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 20 + "px";
+    heart.style.animationDuration = Math.random() * 3 + 3 + "s";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
+
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
