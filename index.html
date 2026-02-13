@@ -3,111 +3,180 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Sondos ❤️</title>
+<title>إلى Sondos ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Cairo', sans-serif;
-    background: linear-gradient(135deg, #ff4e8a, #ff9a9e);
-    text-align: center;
-    color: white;
-    overflow: hidden;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Cairo',sans-serif;
 }
 
-.container {
-    position: relative;
-    top: 20%;
-    padding: 20px;
+body{
+height:100vh;
+overflow:hidden;
+background:linear-gradient(135deg,#ff416c,#ff4b2b);
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+text-align:center;
 }
 
-h1 {
-    font-size: 40px;
-    animation: glow 2s infinite alternate;
+.page{
+position:absolute;
+width:100%;
+height:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+transition:1s;
 }
 
-p {
-    font-size: 20px;
-    line-height: 1.8;
-    margin: 20px;
+.hidden{
+opacity:0;
+pointer-events:none;
+transform:scale(1.2);
 }
 
-button {
-    padding: 15px 25px;
-    font-size: 18px;
-    border: none;
-    border-radius: 30px;
-    background-color: white;
-    color: #ff4e8a;
-    cursor: pointer;
-    transition: 0.3s;
+h1{
+font-size:42px;
+margin-bottom:20px;
 }
 
-button:hover {
-    background-color: #ffe6f0;
-    transform: scale(1.1);
+button{
+padding:12px 30px;
+border:none;
+border-radius:40px;
+background:white;
+color:#ff416c;
+font-size:18px;
+cursor:pointer;
+transition:.4s;
 }
 
-@keyframes glow {
-    from { text-shadow: 0 0 10px white; }
-    to { text-shadow: 0 0 25px #fff; }
+button:hover{
+transform:scale(1.1);
+background:#ffe6ec;
 }
 
-.heart {
-    position: absolute;
-    color: white;
-    animation: float 6s linear infinite;
+#message{
+font-size:24px;
+max-width:700px;
+line-height:1.8;
+opacity:0;
+margin-top:20px;
+white-space:pre-line;
 }
 
-@keyframes float {
-    from { transform: translateY(100vh); opacity: 1; }
-    to { transform: translateY(-10vh); opacity: 0; }
+.type{
+border-left:2px solid white;
+overflow:hidden;
+}
+
+.heart{
+position:absolute;
+width:15px;
+height:15px;
+background:white;
+transform:rotate(45deg);
+animation:float 8s linear infinite;
+opacity:.7;
+}
+
+.heart::before,
+.heart::after{
+content:'';
+position:absolute;
+width:15px;
+height:15px;
+background:white;
+border-radius:50%;
+}
+
+.heart::before{
+top:-7px;
+left:0;
+}
+
+.heart::after{
+left:-7px;
+top:0;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh) rotate(45deg);}
+100%{transform:translateY(-10vh) rotate(45deg);}
 }
 </style>
 </head>
-
 <body>
 
-<div class="container">
-    <h1>سندس ❤️</h1>
-    <p>
-        كل سنة وإنتي حبيبتي وصاحبتي وأجمل حاجة حصلت في حياتي.  
-        وجودك جنبي نعمة بحمد ربنا عليها كل يوم.  
-        ضحكتك بتغير يومي، وكلامك بيطمني، وقلبك هو المكان الوحيد اللي بحس فيه بالأمان.  
-        أنا بحبك حب مش مجرد كلمة،  
-        حب بيكبر كل يوم أكتر من اللي قبله.  
-        يا أجمل صدفة وأحلى قدر ❤️
-    </p>
-
-    <button onclick="showLove()">اضغطي هنا يا روحي 💌</button>
-
-    <p id="secret" style="display:none; font-size:22px; margin-top:20px;">
-        أنا اخترتك إنتي… وهفضل أختارك كل يوم ❤️  
-        Happy Valentine’s Day يا كل حياتي 💕
-    </p>
+<div class="page" id="page1">
+<h1>إلى أجمل حاجة في حياتي… Sondos ❤️</h1>
+<button onclick="startLove()">اضغطي هنا يا روحي</button>
 </div>
 
+<div class="page hidden" id="page2">
+<h1>يا Sondos ✨</h1>
+<div id="message" class="type"></div>
+</div>
+
+<audio id="bgMusic" loop>
+<source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+</audio>
+
 <script>
-function showLove() {
-    document.getElementById("secret").style.display = "block";
+const text = 
+`Sondos ❤️
+
+انتي مش بس حب في حياتي…
+انتي الأمان، والضحكة، وراحة القلب.
+
+وجودك جمبي بيخليني أحس إن الدنيا بخير،
+وإن ربنا رزقني بأجمل نعمة ممكن حد يتمناها.
+
+كل لحظة معاكي بتعدي بسرعة،
+بس إحساسي ناحيتك بيكبر ك ل يوم أكتر.
+
+حب صادق، نضيف، ومليان امتنان إنك في حياتي.
+
+وعد مني إني دايمًا أكون سند ليكي،
+وأفضل أختارك كل يوم من غير تردد. ❤️`;
+
+let i = 0;
+
+function startLove(){
+document.getElementById("page1").classList.add("hidden");
+document.getElementById("page2").classList.remove("hidden");
+document.getElementById("bgMusic").play();
+typeWriter();
+createHearts();
 }
 
-function createHeart() {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = Math.random() * 20 + 20 + "px";
-    heart.style.animationDuration = Math.random() * 3 + 3 + "s";
-    document.body.appendChild(heart);
-
-    setTimeout(() => {
-        heart.remove();
-    }, 6000);
+function typeWriter(){
+if(i < text.length){
+document.getElementById("message").style.opacity = 1;
+document.getElementById("message").innerHTML += text.charAt(i);
+i++;
+setTimeout(typeWriter,40);
+}
 }
 
-setInterval(createHeart, 300);
+function createHearts(){
+setInterval(()=>{
+let heart = document.createElement("div");
+heart.classList.add("heart");
+heart.style.left = Math.random()*100 + "vw";
+heart.style.animationDuration = (Math.random()*3+5)+"s";
+document.body.appendChild(heart);
+setTimeout(()=>{heart.remove()},8000);
+},300);
+}
 </script>
 
 </body>
